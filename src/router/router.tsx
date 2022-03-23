@@ -12,7 +12,6 @@ export default function Router() {
             <Route path="/" element={<Home />} />
             <Route path="/items" element={<Home />} />
             <Route path="/items/:id" element={<Home />} />
-            {/* <Route path="/search" element={<Search />}></Route> */}
           </Routes>
         </Layout>
       </BrowserRouter>
