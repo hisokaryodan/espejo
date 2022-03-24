@@ -4,9 +4,8 @@ import { Context } from "../../context/context";
 import { useParams, useSearchParams } from "react-router-dom";
 import { detailService, searchService } from "./../../api/apiUtils";
 import { reorderSearch } from "./../../utils/reorder";
-
+import "bootstrap/dist/css/bootstrap.css";
 import "./Home.css";
-import logo from "../../logo.svg";
 
 export const Home = (props: {}) => {
   let params = useParams();
@@ -28,8 +27,6 @@ export const Home = (props: {}) => {
 
   const { name, lastName }: any = useContext(Context);
   return (
-    <div className="App">
-      Vista buscador solo
-    </div>
+    <div className="text-center"><p>Este es el HOME. Realice una búsqueda</p></div>
   );
 };
