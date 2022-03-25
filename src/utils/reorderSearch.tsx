@@ -77,7 +77,7 @@ export const reorderSearch = (
     categories: [],
     items: [],
   };
-  console.log("searchResult => ", searchResult);
+  // console.log("searchResult => ", searchResult);
   const [categories] = searchResult.available_filters;
 
   result.categories = categories.values.map((element: Value2) => {
@@ -98,7 +98,7 @@ export const reorderSearch = (
     };
   });
 
-  console.log("reoderResult =>", result);
+  // console.log("reoderResult =>", result);
 
   return result;
 };

@@ -1,12 +1,58 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { Context } from "../../context/context";
 import celularGrande from "./../../assets/maincelular.jpg";
+import { detailService, descriptionService } from "./../../api/apiUtils";
+import { useParams } from "react-router-dom";
+import {
+  reorderDetail,
+  DetailResultInterface,
+} from "./../../utils/redorderDetail";
 import "bootstrap/dist/css/bootstrap.css";
 import "./Detail.css";
+const DetailInitialState: DetailResultInterface = {
+  author: {
+    name: "",
+    lastname: "",
+  },
+  item: {
+    id: "",
+    title: "",
+    price: {
+      currency: "",
+      amount: 0,
+    },
+    picture: "",
+    condition: "",
+    free_shipping: false,
+    sold_quantity: 0,
+    description: "",
+  },
+};
 
 export const Detail = (props: {}) => {
   const { name, lastName }: any = useContext(Context);
+  const [detailResult, setDetailResult] =
+    useState<DetailResultInterface>(DetailInitialState);
+  let params = useParams() as any;
+
+  useEffect(() => {
+    service();
+  }, []);
+
+  const service = async () => {
+    const [detail, description] = await Promise.all([
+      detailService(params.id),
+      descriptionService(params.id),
+    ]);
+
+    console.log(detail, description);
+
+    setDetailResult(reorderDetail(detail, description));
+  };
+
+  console.log("detailResult => ", detailResult);
+
   return (
     <div className="detail-page">
       <div className="container">
@@ -23,24 +69,21 @@ export const Detail = (props: {}) => {
           <div className="col-md-9">
             <img
               className="img-producto-detail"
-              src={celularGrande}
+              src={detailResult.item.picture}
               alt="producto"
             />
             <h3 className="title-description">Descripción del producto</h3>
-            <p className="general-descrip">
-              Funcionamiento fluido, rendimiento fuerte: alimentado por el
-              último procesador MTK6580P GHz Quad Core y funciona en el último
-              sistema operativo Android 6.0 Torta todo en uno, cuerpo de
-              aleación de magnesio y aluminio, cubierta trasera de vidrio
-              doblado en caliente de color degradado galvanizado nano 3D,
-              pantalla de Telefingers de 5 puntos, desbloqueo facial,
-              despertador inteligente
-            </p>
+            <p className="general-descrip">{detailResult.item.description}</p>
           </div>
           <div className="col-md-3">
-            <p className="detail-product">Nuevo - 234 vendidos</p>
-            <p className="product-name">Deco Reverse Sombrero Oxford</p>
-            <p className="price-detail">$ 1.980</p>
+            <p className="detail-product">
+              Nuevo - {detailResult.item.sold_quantity} vendidos
+            </p>
+            <p className="product-name">{detailResult.item.title}</p>
+            <p className="price-detail">
+              {detailResult.item.price.currency}{" "}
+              {detailResult.item.price.amount}
+            </p>
             <button className="btn btn-primary btn-detail-buy">Comprar</button>
           </div>
         </div>
