@@ -15,7 +15,7 @@ interface ItemInterface {
   free_shipping: boolean;
 }
 
-interface SearhResultInterface {
+export interface SearhResultInterface {
   author: AuthorInterface;
   categories: string[];
   items: ItemInterface[];
@@ -64,20 +64,20 @@ interface AvailableFilter {
   values: Value2[];
 }
 
-interface RootObject {
+interface SearchInterface {
   results: Result[];
   available_filters: AvailableFilter[];
 }
 
 export const reorderSearch = (
-  searchResult: RootObject
+  searchResult: SearchInterface
 ): SearhResultInterface => {
   let result: SearhResultInterface = {
     author: { name: "Jose Camilo", lastname: "Urrego Rojas" },
     categories: [],
     items: [],
   };
-  // console.log("searchResult => ", searchResult);
+
   const [categories] = searchResult.available_filters;
 
   result.categories = categories.values.map((element: Value2) => {
@@ -97,8 +97,6 @@ export const reorderSearch = (
       free_shipping: element.shipping.free_shipping,
     };
   });
-
-  // console.log("reoderResult =>", result);
 
   return result;
 };

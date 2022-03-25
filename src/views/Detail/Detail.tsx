@@ -1,7 +1,4 @@
 import { useEffect, useState } from "react";
-import { useContext } from "react";
-import { Context } from "../../context/context";
-import celularGrande from "./../../assets/maincelular.jpg";
 import { detailService, descriptionService } from "./../../api/apiUtils";
 import { useParams } from "react-router-dom";
 import {
@@ -10,6 +7,7 @@ import {
 } from "./../../utils/redorderDetail";
 import "bootstrap/dist/css/bootstrap.css";
 import "./Detail.css";
+
 const DetailInitialState: DetailResultInterface = {
   author: {
     name: "",
@@ -30,8 +28,7 @@ const DetailInitialState: DetailResultInterface = {
   },
 };
 
-export const Detail = (props: {}) => {
-  const { name, lastName }: any = useContext(Context);
+export const Detail = () => {
   const [detailResult, setDetailResult] =
     useState<DetailResultInterface>(DetailInitialState);
   let params = useParams() as any;
@@ -46,21 +43,15 @@ export const Detail = (props: {}) => {
       descriptionService(params.id),
     ]);
 
-    console.log(detail, description);
-
     setDetailResult(reorderDetail(detail, description));
   };
-
-  console.log("detailResult => ", detailResult);
 
   return (
     <div className="detail-page">
       <div className="container">
         <div className="row">
           <div className="col-12">
-            <div className="breadcrum p-0">
-              <p>Note 11 - iphone - seiphone - 13 pro 128 - gbtecno mobile</p>
-            </div>
+            <div className="breadcrum p-0"></div>
           </div>
         </div>
       </div>

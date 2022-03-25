@@ -5,7 +5,7 @@ import searchImg from "./../../assets/search.png";
 import "./Search.css";
 import "bootstrap/dist/css/bootstrap.css";
 
-export const Search = (props: {}) => {
+export const Search = () => {
   const navigate = useNavigate();
   const [query, setQuery] = useState({});
 
@@ -25,7 +25,14 @@ export const Search = (props: {}) => {
       <div className="container">
         <div className="row">
           <div className="head-meli">
-            <div className="logo mx-3">
+            <div
+              className="logo mx-3"
+              onClick={() =>
+                navigate({
+                  pathname: "/",
+                })
+              }
+            >
               <img src={logo} alt="Logo" width="60" />
             </div>
             <div className="search-box">

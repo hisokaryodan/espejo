@@ -58,8 +58,8 @@ export const reorderDetail = (
   detail: DetailInterface,
   description: DescriptionInterface
 ): DetailResultInterface => {
-  console.log("detail => ", detail);
-  console.log("description => ", description);
+  // console.log("detail => ", detail);
+  // console.log("description => ", description);
 
   return {
     author: {

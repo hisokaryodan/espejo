@@ -5,7 +5,7 @@ const detail = "https://api.mercadolibre.com/items/";
 
 export const searchService = async (query: string) => {
   const response = await axios.get(search + query);
-  return response;
+  return response.data;
 };
 
 export const detailService = async (id: string) => {
