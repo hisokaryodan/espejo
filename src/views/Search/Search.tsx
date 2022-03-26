@@ -32,6 +32,7 @@ export const Search = () => {
                   pathname: "/",
                 })
               }
+              data-testid="home_button"
             >
               <img src={logo} alt="Logo" width="60" />
             </div>
@@ -43,6 +44,7 @@ export const Search = () => {
                   id="search"
                   placeholder="Nunca dejes de buscar"
                   onChange={handleChange}
+                  data-testid="input_search"
                 />
                 <div className="input-group-prepend">
                   <input
@@ -52,6 +54,7 @@ export const Search = () => {
                     src={searchImg}
                     alt="Submit"
                     onClick={() => search()}
+                    data-testid="search_button"
                   />
                 </div>
               </div>

@@ -14,7 +14,7 @@ const searchResultInitialState: SearhResultInterface = {
   items: [],
 };
 
-const SearchResult = () => {
+export const SearchResult = () => {
   const [searchResult, setSearchResult] = useState<SearhResultInterface>(
     searchResultInitialState
   );
@@ -44,6 +44,7 @@ const SearchResult = () => {
                   src={item.picture}
                   alt="producto"
                   onClick={() => detailProduct(item.id)}
+                  data-testid="detail_button"
                 />
               </div>
               <div className="col-md-8">

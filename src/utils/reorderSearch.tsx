@@ -72,6 +72,7 @@ interface SearchInterface {
 export const reorderSearch = (
   searchResult: SearchInterface
 ): SearhResultInterface => {
+  console.log(searchResult);
   let result: SearhResultInterface = {
     author: { name: "Jose Camilo", lastname: "Urrego Rojas" },
     categories: [],
