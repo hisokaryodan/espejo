@@ -32,7 +32,7 @@ Este comando corre los test los cuales se mostraran con su respectiva cobertura.
 
 ## Construido con 🛠️
 
-- [ReactJs]((https://github.com/facebook/create-react-app)>)
+- [ReactJs](https://github.com/facebook/create-react-app)
 - [TypeScript](https://github.com/microsoft/TypeScript)
 
 ## Autor ✒️
