@@ -37,4 +37,4 @@ Este comando corre los test los cuales se mostraran con su respectiva cobertura.
 
 ## Autor ✒️
 
-- **Jose Camilo Urrego Rojas** - _Desarrolador_ - [hisokaryodan](https://github.com/hisokaryodan)
+- **Jose Camilo Urrego Rojas** - _Desarrollador_ - [hisokaryodan](https://github.com/hisokaryodan)
