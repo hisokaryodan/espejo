@@ -8,12 +8,18 @@ import { useNavigate } from "react-router-dom";
 import "./SearchResult.css";
 import "bootstrap/dist/css/bootstrap.css";
 
+/**
+ * Estado Inicial del resultado de la busqueda basada en una interface para asegurar le integridad del resultado
+ */
 const searchResultInitialState: SearhResultInterface = {
   author: { name: "", lastname: "" },
   categories: [],
   items: [],
 };
 
+/**
+ * Este Componente Realiza y muestra los resultados de la busqueda
+ */
 export const SearchResult = () => {
   const [searchResult, setSearchResult] = useState<SearhResultInterface>(
     searchResultInitialState
@@ -24,6 +30,11 @@ export const SearchResult = () => {
 
   useEffect(() => {
     const search = async () => {
+      /**
+       * En las siguientes lineas consumimos y reordenamos la respuesta del servicio de busqueda.
+       * Tambien se guarda en un estado esta respuesta reordenada.
+       * Todo esto en un usseEffect para que suceda cuando el componente carga por primera vez.
+       */
       const response = (await searchService(productSearch as string)) as any;
       const reorderSeaarch = reorderSearch(response);
       setSearchResult(reorderSeaarch);
@@ -32,6 +43,9 @@ export const SearchResult = () => {
     search();
   }, []);
 
+  /**
+   * Función encargada de renderizar cada uno de los items limitando la repsuesta a 4 resultados
+   */
   function items() {
     const listItems = searchResult.items.map(
       (item: any, index: any) =>
@@ -71,6 +85,9 @@ export const SearchResult = () => {
     return <div className="container border-radius-white">{listItems}</div>;
   }
 
+  /**
+   * Función encargada de dirigir a la vista de detalle
+   */
   function detailProduct(id: string) {
     navigate({
       pathname: "/items/" + id,

@@ -1,3 +1,6 @@
+/**
+ * Interfaces encargadas de la respuesta final
+ */
 interface AuthorInterface {
   name: string;
   lastname: string;
@@ -21,7 +24,9 @@ export interface SearhResultInterface {
   items: ItemInterface[];
 }
 
-////////////////////////////
+/**
+ * Interfaces encargadas de la respuesta de los servicio
+ */
 
 interface Value2 {
   id: string;
@@ -69,6 +74,9 @@ interface SearchInterface {
   available_filters: AvailableFilter[];
 }
 
+/**
+ * Función encargada de mapear el nuevo objeto del resultado de busqueda
+ */
 export const reorderSearch = (
   searchResult: SearchInterface
 ): SearhResultInterface => {

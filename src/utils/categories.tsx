@@ -1,3 +1,6 @@
+/**
+ * Creamos una función para limitar las categorias a 4
+ */
 export const orderCategories = (searchResult: any) => {
   let categoriesString = "";
 

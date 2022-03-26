@@ -5,15 +5,24 @@ import searchImg from "./../../assets/search.png";
 import "./Search.css";
 import "bootstrap/dist/css/bootstrap.css";
 
+/**
+ * Este Componente se puede tomar como un layout ya que se repite en todas las vistas. Se encarga de realizar la busqueda
+ */
 export const Search = () => {
   const navigate = useNavigate();
   const [query, setQuery] = useState({});
 
+  /**
+   * Función encargada de atrapar el valor del input de busqueda se guarda en un estado
+   */
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     setQuery(newValue);
   };
 
+  /**
+   * Función que redirige a la vista de búsqueda
+   */
   const search = () => {
     navigate({
       pathname: "/items?search=" + query,

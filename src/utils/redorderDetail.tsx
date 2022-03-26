@@ -1,3 +1,6 @@
+/**
+ * Interfaces encargadas de la respuesta final
+ */
 interface AuthorInterface {
   name: string;
   lastname: string;
@@ -22,8 +25,9 @@ export interface DetailResultInterface {
   item: ItemInterface;
 }
 
-////////////////////////////
-
+/**
+ * Interfaces encargadas de la respuesta de los servicios
+ */
 export interface PictureInterface {
   id: string;
   url: string;
@@ -54,13 +58,13 @@ export interface DescriptionInterface {
   plain_text: string;
 }
 
+/**
+ * Función encargada de mapear el nuevo objeto de detalle
+ */
 export const reorderDetail = (
   detail: DetailInterface,
   description: DescriptionInterface
 ): DetailResultInterface => {
-  console.log("detail => ", detail);
-  console.log("description => ", description);
-
   return {
     author: {
       name: "Jose Camilo",

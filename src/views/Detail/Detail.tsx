@@ -8,6 +8,9 @@ import {
 import "bootstrap/dist/css/bootstrap.css";
 import "./Detail.css";
 
+/**
+ * Estado Inicial del resultado del detalle basada en una interface para asegurar le integridad del resultado
+ */
 const DetailInitialState: DetailResultInterface = {
   author: {
     name: "",
@@ -28,6 +31,9 @@ const DetailInitialState: DetailResultInterface = {
   },
 };
 
+/**
+ * Este Componente muestra el detalle del producto y su descripción
+ */
 export const Detail = () => {
   const [detailResult, setDetailResult] =
     useState<DetailResultInterface>(DetailInitialState);
@@ -38,11 +44,18 @@ export const Detail = () => {
   }, []);
 
   const service = async () => {
+    /**
+     * Usamos esta funcion para realizar de manera conjunta el consumo de los servicios detalle y descripcion.
+     * Esto debido a que al no ser dependientes una de otra es perfectamente viable hacerlas en simultaneo.
+     */
     const [detail, description] = await Promise.all([
       detailService(params.id),
       descriptionService(params.id),
     ]);
 
+    /**
+     * Reordenamos las respuesta creando un objeto unico
+     */
     setDetailResult(reorderDetail(detail, description));
   };
 
