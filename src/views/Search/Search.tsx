@@ -27,6 +27,7 @@ export const Search = () => {
     navigate({
       pathname: "/items?search=" + query,
     });
+    window.location.reload();
   };
 
   return (
